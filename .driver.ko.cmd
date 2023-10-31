@@ -1,0 +1,1 @@
+cmd_/home/adri/Documents/G4_Proyecto2_SO/driver.ko := ld -r -m elf_x86_64 -z noexecstack --no-warn-rwx-segments --build-id=sha1  -T scripts/module.lds -o /home/adri/Documents/G4_Proyecto2_SO/driver.ko /home/adri/Documents/G4_Proyecto2_SO/driver.o /home/adri/Documents/G4_Proyecto2_SO/driver.mod.o;  true
