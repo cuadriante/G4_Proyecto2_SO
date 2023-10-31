@@ -1,1 +1,0 @@
-cmd_/home/adri/Documents/G4_Proyecto2_SO/Module.symvers :=  scripts/mod/modpost -m -a     -o /home/adri/Documents/G4_Proyecto2_SO/Module.symvers -T /home/adri/Documents/G4_Proyecto2_SO/modules.order -i Module.symvers -e 
