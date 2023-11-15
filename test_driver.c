@@ -286,6 +286,6 @@ static int write(struct usb_serial_port *port,void *dest, size_t size){
 	return count;
 }
 module_usb_serial_driver(serial_drivers, id_table_combined);
-MODULE_AUTHOR("Aldo");
+MODULE_AUTHOR("adri");
 MODULE_DESCRIPTION("USB - Serial Driver SO");
 MODULE_LICENSE("GPL");

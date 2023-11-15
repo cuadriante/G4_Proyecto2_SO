@@ -87,4 +87,4 @@ MODULE_INFO(depends, "usbserial");
 
 MODULE_ALIAS("usb:v0403p6001d*dc*dsc*dp*ic*isc*ip*in*");
 
-MODULE_INFO(srcversion, "F83206608BC816572E5E35E");
+MODULE_INFO(srcversion, "055095D9DDE3C0944848486");
