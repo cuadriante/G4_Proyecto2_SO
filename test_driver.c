@@ -55,6 +55,6 @@ static void __exit arduino_exit(void)
 module_init(arduino_init);
 module_exit(arduino_exit);
 
-MODULE_AUTHOR("Your Name");
+MODULE_AUTHOR("cuadri");
 MODULE_DESCRIPTION("Arduino USB Serial Driver");
 MODULE_LICENSE("GPL");
