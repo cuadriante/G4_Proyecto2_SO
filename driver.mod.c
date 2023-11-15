@@ -90,5 +90,6 @@ MODULE_INFO(depends, "usbserial");
 MODULE_ALIAS("usb:v4348p5523d*dc*dsc*dp*ic*isc*ip*in*");
 MODULE_ALIAS("usb:v1A86p7523d*dc*dsc*dp*ic*isc*ip*in*");
 MODULE_ALIAS("usb:v1A86p5523d*dc*dsc*dp*ic*isc*ip*in*");
+MODULE_ALIAS("usb:v2341p0042d*dc*dsc*dp*ic*isc*ip*in*");
 
-MODULE_INFO(srcversion, "3E55982A1FE8433D2D8F887");
+MODULE_INFO(srcversion, "F59858E4EDCCCF6E30FCDA7");
