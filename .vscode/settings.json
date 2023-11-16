@@ -1,6 +1,7 @@
 {
     "files.associations": {
-        "test_driver.h": "c"
+        "test_driver.h": "c",
+        "driver.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

@@ -1,7 +1,7 @@
 # Makefile for the ch341 driver
 
-# obj-m += driver.o
-obj-m += test_driver.o
+obj-m += driver.o
+#obj-m += test_driver.o
 
 # Set the desired compiler
 CC := /usr/bin/x86_64-linux-gnu-gcc-13

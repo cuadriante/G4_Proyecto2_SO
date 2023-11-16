@@ -54,15 +54,3 @@ int serial_write(int fd, char *buf, int len) {
   return write(fd, buf, len);
 }
 
-int main() {
-  int fd = serial_open("/dev/ttyUSB0");
-  
-  set_interface_attribs(fd, B115200, 0); 
-  
-  serial_write(fd, "Hello!", 6);
-  
-  char buf[100];
-  int n = serial_read(fd, buf, sizeof(buf));
-  
-  serial_close(fd);
-}
