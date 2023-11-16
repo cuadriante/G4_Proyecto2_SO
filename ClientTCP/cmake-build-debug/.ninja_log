@@ -1,0 +1,8 @@
+# ninja log v5
+0	15	1700162574444763307	ClientTCP	2fab218a28e8b429
+0	42	1700080013865055953	CMakeFiles/ClientTCP.dir/client.c.o	c38b322b5acca1a2
+0	11	1700164793555059137	build.ninja	dadeb602202241be
+0	17	1700162560296856441	CMakeFiles/ClientTCP.dir/main.c.o	a5fe6a3071303950
+0	29	1700154581617311258	CMakeFiles/ClientTCP.dir/slaveExectuable.c.o	3b69b5eda7d5dc6e
+1	29	1700079597539889799	CMakeFiles/ClientTCP.dir/clientCLI.c.o	e8801b7ab6e5babb
+1	64	1700073523366554805	CMakeFiles/ClientTCP.dir/chacha20.c.o	d96088067633880b
