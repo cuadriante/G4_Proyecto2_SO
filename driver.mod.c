@@ -237,6 +237,7 @@ __used __section("__versions") =
 
 MODULE_INFO(depends, "");
 
+MODULE_ALIAS("usb:v2341p0042d*dc*dsc*dp*ic*isc*ip*in*");
 MODULE_ALIAS("usb:v0424p274Ed*dc*dsc*dp*ic*isc*ip*in*");
 MODULE_ALIAS("usb:v076Dp0006d*dc*dsc*dp*ic*isc*ip*in*");
 MODULE_ALIAS("usb:v17EFp7000d*dc*dsc*dp*ic*isc*ip*in*");
@@ -373,4 +374,4 @@ MODULE_ALIAS("usb:v*p*d*dc*dsc*dp*ic02isc02ip05in*");
 MODULE_ALIAS("usb:v*p*d*dc*dsc*dp*ic02isc02ip06in*");
 MODULE_ALIAS("usb:v1519p0452d*dc*dsc*dp*ic*isc*ip*in*");
 
-MODULE_INFO(srcversion, "2D5867376D5E964549D7242");
+MODULE_INFO(srcversion, "2CA25456451942ED70B803D");
