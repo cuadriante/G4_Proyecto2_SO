@@ -2,6 +2,6 @@
 #include <unistd.h>
 
 int main() {
-    enviarCaracteresSerial("-'esi");
+    enviarCaracteresSerial("--.e.-e-e..e-e---e.-.-.e");
     return 0;
 }
