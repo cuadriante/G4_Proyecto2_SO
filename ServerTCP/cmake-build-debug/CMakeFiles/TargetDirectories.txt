@@ -1,0 +1,3 @@
+/home/curso/Proyectos/ServerTCP/cmake-build-debug/CMakeFiles/ServerTCP.dir
+/home/curso/Proyectos/ServerTCP/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/curso/Proyectos/ServerTCP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
