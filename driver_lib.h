@@ -1,6 +1,6 @@
 #ifndef CHOMCHITO_LIB_H
 #define CHOMCHITO_LIB_H
 
-void Execute(const char* message);
+void enviarCaracteresSerial(const char *caracteres);
 
 #endif
