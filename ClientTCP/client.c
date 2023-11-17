@@ -10,7 +10,7 @@
  * @param SERVER_ADDRESS La dirección IP del servidor al que se va a conectar.
  * @param PORT El número de puerto del servidor al que se va a conectar.
  * @param buf_tx El búfer que contiene los datos que se enviarán al servidor.
- * @param action La acción que se realizará en el servidor.
+ * @param nDIv Cantidad de divisiones en la que se debe dividir el texto a encriptar.
  * @return 0 si la operación se realiza con éxito, -1 si hay un error.
  */
 int clientMessage(char *SERVER_ADDRESS, int PORT, char *buf_tx, char *nDiv) {
@@ -96,7 +96,12 @@ int clientMessage(char *SERVER_ADDRESS, int PORT, char *buf_tx, char *nDiv) {
     return 0;
 }
 
-// Función para leer el contenido de un archivo y devolverlo como una cadena
+/**
+ * Reads a text file and returns its content as a string.
+ * 
+ * @param txt The path to the text file to be read.
+ * @return A dynamically allocated string containing the file content, or NULL if an error occurs.
+ */
 char *read_txt(const char *txt) {
     FILE *pFile = fopen(txt, "r");
 
@@ -129,7 +134,14 @@ char *read_txt(const char *txt) {
     return string;
 
 }
-
+/**
+ * Counts words in a text and finds indices for cutting the text into parts based on a given ratio.
+ * 
+ * @param text The text to analyze.
+ * @param wordCount Pointer to an integer to store the total word count.
+ * @param cutIndices Array to store the indices where the text will be cut.
+ * @param n The ratio for dividing the text into parts.
+ */
 void countWordsAndFindCuts(const char *text, int *wordCount, int cutIndices[], int n) {
     int length = strlen(text);
     int words = 0;
@@ -164,7 +176,17 @@ void countWordsAndFindCuts(const char *text, int *wordCount, int cutIndices[], i
     }
     *wordCount = words;  // Actualizamos el recuento total de palabras
 }
-
+/**
+ * Divides a text into parts, encrypts each part, and saves them in separate files.
+ * 
+ * @param cuts The number of cuts for dividing the text.
+ * @param cutIndices Array of indices indicating where the text will be cut.
+ * @param plaintext The original text to be divided and encrypted.
+ * @param key The encryption key.
+ * @param counter The counter for encryption.
+ * @param nonce The nonce for encryption.
+ * @param ogSizes Array to store the sizes of the original parts.
+ */
 void save(int cuts, int *cutIndices, const char *plaintext, uint8_t *key, uint32_t counter,  uint8_t *nonce, int *ogSizes) {
     char filename[100];
     for (int i=0; i<cuts; i++){
@@ -210,7 +232,13 @@ void save(int cuts, int *cutIndices, const char *plaintext, uint8_t *key, uint32
     }
 }
 
-// Función para guardar una cadena en un archivo de texto
+/**
+ * Saves encrypted text into a file in hexadecimal format.
+ * 
+ * @param txt The path to the file where the encrypted text will be saved.
+ * @param crypto The encrypted text.
+ * @param txt_len The length of the encrypted text.
+ */
 void save_crypto(const char *txt, unsigned char *crypto, unsigned long txt_len) {
     FILE *pFile = fopen(txt, "w");
 
@@ -226,7 +254,9 @@ void save_crypto(const char *txt, unsigned char *crypto, unsigned long txt_len) 
     // Cierra el pFile
     fclose(pFile);
 }
-
+/**
+ * Deletes encrypted files.
+ */
 void delete(){
     int i = 1;
     while (1){
@@ -241,7 +271,12 @@ void delete(){
         i++;
     }
 }
-
+/**
+ * Reads a file containing hexadecimal text and returns it as a string.
+ * 
+ * @param filename The path to the file containing hexadecimal text.
+ * @return A dynamically allocated string containing the hexadecimal text, or NULL if an error occurs.
+ */
 char *read_hex_file(const char *filename) {
     FILE *pFile = fopen(filename, "r");
 

@@ -7,14 +7,15 @@
 #include "driver_lib.h"
 
 /**
- * Inicia el servidor con los parámetros proporcionados y acepta conexiones entrantes.
+ * This method initializes and runs the server on a specified port and host address,
+ * handling incoming connections iteratively.
  *
- * @param SERV_PORT Puerto en el que se inicia el servidor.
- * @param SERV_HOST_ADDR Dirección IP en la que se inicia el servidor.
- * @param histoPath Ruta al directorio para el histograma.
- * @param colorPath Ruta al directorio para los colores.
- * @param logPath Ruta al archivo de registro.
- * @return 0 si la operación se realiza con éxito, -1 en caso de error.
+ * @param SERV_PORT       The server port number.
+ * @param SERV_HOST_ADDR  The server host address.
+ * @param S3              The count for S3.
+ * @param S1              The count for S1.
+ * @param S2              The count for S2.
+ * @return Returns 0 on successful server operation, -1 otherwise.
  */
 int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
     int sockfd, connfd ;  /* listening socket and connection socket file descriptors */
@@ -261,7 +262,16 @@ char* concat(char const *str1, char const *str2, const size_t l1, size_t const l
     memcpy(result+l1, str2, l2+1);
     return result;
 }
-
+/**
+ * Executes a specific command based on the current core, core amount, division number, and original size.
+ * Updates the 'command' string with the executed command.
+ *
+ * @param currentCore The current core for execution.
+ * @param coreAmount  The number of cores to execute the command.
+ * @param command     The command string to be updated.
+ * @param nDiv        The division number.
+ * @param ogSize      The original size of the data.
+ */
 void executeCommand(struct Core *currentCore, int coreAmount, char* command, int nDiv, int ogSize) {
     if (strcmp(currentCore->name, "S3") == 0) {
         /*Mandar mensaje de ejecutar con la cantidad de nodos en coreAmount al server master
@@ -303,7 +313,15 @@ void executeCommand(struct Core *currentCore, int coreAmount, char* command, int
     }
 }
 
-// Función para asignar nodos a los cores
+/**
+ * Assigns nodes to cores based on division and original sizes, updating the 'command' string accordingly.
+ *
+ * @param cores       Array of cores.
+ * @param totalCores  Total number of available cores.
+ * @param nDiv        Division number.
+ * @param command     The command string to be updated.
+ * @param ogSizes     Array containing original sizes.
+ */
 void assignNodes(struct Core *cores, int totalCores, int nDiv, char* command, int *ogSizes) {
     while (nDiv > 0) {
         if (nDiv > totalCores) {
@@ -332,7 +350,9 @@ void assignNodes(struct Core *cores, int totalCores, int nDiv, char* command, in
         printf("Asignado al %s, le quedan %d nucleos. Y quedan %d procesos.\n", currentCore->name, currentCore->count, nDiv);
     }
 }
-
+/**
+ * Deletes files in a specific directory.
+ */
 void delete(){
     int i = 1;
     while (1){
@@ -348,6 +368,12 @@ void delete(){
     }
 }
 
+/**
+ * Reads a text file and returns its content as a string.
+ *
+ * @param txt The path to the text file.
+ * @return    Returns the content of the text file as a string.
+ */
 char *read_txt(const char *txt) {
     FILE *pFile = fopen(txt, "r");
 
@@ -380,7 +406,12 @@ char *read_txt(const char *txt) {
     return string;
 
 }
-
+/**
+ * Converts a text string into Morse code.
+ *
+ * @param text The input text to be converted.
+ * @return     Returns the Morse code representation of the input text.
+ */
 char* textToMorse(const char *text) {
     const char morseCode[][5] = {
             ".-", "-...", "-.-.", "-..", ".",
@@ -437,6 +468,11 @@ char* textToMorse(const char *text) {
     return result;
 }
 
+/**
+ * Transforms a string by replacing spaces with 'e', adding 'i' at the start, and 'f' at the end.
+ *
+ * @param input_str The input string to be transformed.
+ */
 void transformarString(char input_str[]) {
     int longitud = strlen(input_str);
 

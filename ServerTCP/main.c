@@ -1,7 +1,7 @@
 #include "serverInit.h"
 /**
- * Función principal del programa. Lee la configuración desde un archivo,
- * inicializa la configuración, y luego inicia el servidor utilizando la
+ * Función principal del programa. Lee la configuración desde consola,
+ * y luego inicia el servidor utilizando la
  * información de configuración proporcionada.
  *
  * @param argc Cantidad de argumentos de la línea de comandos (no utilizado).

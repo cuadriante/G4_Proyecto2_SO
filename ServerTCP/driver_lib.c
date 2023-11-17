@@ -6,7 +6,11 @@
 #include <termios.h>
 #include "driver_lib.h"
 
-
+/**
+ * Sends characters over a serial port using native C code.
+ * 
+ * @param caracteres The string of characters to be sent over the serial port.
+ */
 void enviarCaracteresSerial(const char *caracteres) {
     const char *puerto_serial = "/dev/ttyACM0"; // Cambia esto al puerto COM correcto en sistemas Windows
 

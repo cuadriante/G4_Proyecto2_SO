@@ -9,6 +9,14 @@
 
 #define MAX_WORD_LENGTH 100
 
+/**
+ * Finds the most repeated word in a file segment specified by index.
+ *
+ * @param filename The name of the file containing text segments.
+ * @param index    The segment index to process.
+ * @param rank     The rank of the process.
+ */
+
 void findMostRepeatedWord(const char *filename, int index, int rank) {
     FILE *file;
     char ch, *line;
@@ -74,7 +82,12 @@ void findMostRepeatedWord(const char *filename, int index, int rank) {
 }
 
 
-// Función para leer una cadena hexadecimal desde un archivo de texto
+/**
+ * Reads hexadecimal text from a file.
+ *
+ * @param filename The name of the file containing hexadecimal text.
+ * @return The hexadecimal text read from the file.
+ */
 char *read_hex_file(const char *filename) {
     FILE *pFile = fopen(filename, "r");
 
@@ -102,7 +115,12 @@ char *read_hex_file(const char *filename) {
     return hex_text;
 }
 
-
+/**
+ * Converts hexadecimal text to character representation.
+ *
+ * @param hex_txt The hexadecimal text to convert.
+ * @return The character representation of the hexadecimal text.
+ */
 char *hex_to_char(const char *hex_txt) {
     int txt_len = strlen(hex_txt);
     char *text_hex = (char *)malloc(txt_len / 2 + 1);
@@ -125,7 +143,13 @@ char *hex_to_char(const char *hex_txt) {
 }
 
 
-
+/**
+ * Main function for processing file segments and finding the most repeated word.
+ *
+ * @param argc Number of command-line arguments.
+ * @param argv Array of command-line arguments.
+ * @return Program exit status.
+ */
 int main(int argc, char *argv[]) {
     if (argc != 3) {
         printf("Usage: %s <index> <size>\n", argv[0]);
