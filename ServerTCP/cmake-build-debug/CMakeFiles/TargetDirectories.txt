@@ -1,3 +1,3 @@
-/home/curso/Proyectos/ServerTCP/cmake-build-debug/CMakeFiles/ServerTCP.dir
-/home/curso/Proyectos/ServerTCP/cmake-build-debug/CMakeFiles/edit_cache.dir
-/home/curso/Proyectos/ServerTCP/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/home/adri/Documents/G4_Proyecto2_SO/ServerTCP/cmake-build-debug/CMakeFiles/ServerTCP.dir
+/home/adri/Documents/G4_Proyecto2_SO/ServerTCP/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/adri/Documents/G4_Proyecto2_SO/ServerTCP/cmake-build-debug/CMakeFiles/rebuild_cache.dir

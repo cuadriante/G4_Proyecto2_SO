@@ -29,5 +29,8 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2);
 void assignNodes(struct Core *cores, int totalCores, int nDiv, char* command, int *ogSizes);
 void executeCommand(struct Core *currentCore, int coreAmount, char* command, int nDiv, int ogSize);
 void delete();
+char *read_txt(const char *txt);
+char* textToMorse(const char *text);
+void transformarString(char input_str[]);
 
 #endif //SERVIDOR_SERVERINIT_H

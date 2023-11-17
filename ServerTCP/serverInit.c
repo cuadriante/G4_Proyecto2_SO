@@ -2,7 +2,9 @@
 // Created by usuario on 8/24/23.
 //
 
+#include <ctype.h>
 #include "serverInit.h"
+#include "driver_lib.h"
 
 /**
  * Inicia el servidor con los parámetros proporcionados y acepta conexiones entrantes.
@@ -20,8 +22,8 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
     struct sockaddr_in servaddr, client;
 
     int len_rx, len_tx = 0;                     /* received and sent length, in bytes */
-    char buff_tx[BUF_SIZE] = "Hello client, I am the server";
-    char buff_rx[BUF_SIZE];   /* buffers for reception  */
+    //char buff_tx[BUF_SIZE] = "Hello client, I am the server";
+    //char buff_rx[BUF_SIZE];   /* buffers for reception  */
 
 
     /* socket creation */
@@ -118,6 +120,7 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
 
                 delete();
 
+
                 for (int i = 1; i < nDiv+1; i++){
                     //OG Size text
                     int og_size = 0;
@@ -140,13 +143,12 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
                     printf("Size txt: %d \n", buffer_size);
 
                     //Txt content
+
                     char *buffer = NULL;
                     buffer = malloc(buffer_size);
 
-
                     char *tempB = NULL;
                     tempB = malloc(buffer_size);
-
 
                     int tempL = 0;
                     while(tempL < buffer_size){
@@ -167,7 +169,7 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
                     tempB [buffer_size] = '\0';
 
                     char filename[100];
-                    snprintf(filename, sizeof(filename), "/home/curso/Desktop/sharedfolder/encrypt%d.txt", i);
+                    snprintf(filename, sizeof(filename), "/home/adri/Desktop/sharedfolder/encrypt%d.txt", i);
                     printf("Save in file: %s\n", filename);
 
                     FILE *file = fopen(filename, "w");
@@ -195,7 +197,7 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
 
 
                 char *command = NULL;
-                command = malloc(1000);
+                command = malloc(3500);
 
                 command[0] = 'm';
                 command[1] = 'p';
@@ -211,6 +213,29 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
                 printf("\n%s\n", command);
 
                 int status = system(command);
+
+                char filename_r[] = "/home/adri/Desktop/sharedfolder/mostRepeated1.txt";
+
+                char* mostrepeated = read_txt(filename_r);
+
+                printf("La palabra mas repetida en la parte 1: %s\n", mostrepeated);
+
+                char* morseCode = textToMorse(mostrepeated);
+
+                printf("La palabra mas repetida en la parte 1 (codigo morse): %s\n", morseCode);
+
+                char resultado[15];
+
+                // Copia la cadena original a la nueva cadena
+                strcpy(resultado, morseCode);
+
+                // Transforma la cadena
+                transformarString(resultado);
+
+                printf("Resultado: %s\n", resultado);
+
+                sleep(2);
+                enviarCaracteresSerial(morseCode);
 
                 free(command);
 
@@ -245,7 +270,7 @@ void executeCommand(struct Core *currentCore, int coreAmount, char* command, int
         printf("Realizar comando en %s con %d nucleos.\n", currentCore->name, coreAmount);
         char restCommand[200];
         snprintf(restCommand, sizeof (restCommand),
-                 "--cpu-set %d-%d --bind-to core -n %d --hostfile /home/curso/Desktop/sharedfolder/hostfile3 -np 1 /home/curso/Desktop/sharedfolder/slaveExecutable %d %d : ",
+                 "--cpu-set %d-%d --bind-to core -n %d --hostfile /home/adri/Desktop/sharedfolder/hostfile3 -np 1 /home/curso/Desktop/sharedfolder/slaveExecutable %d %d : ",
                  (currentCore->count - coreAmount), (currentCore->count - 1), coreAmount, nDiv, ogSize);
 
         strcat(command, restCommand);
@@ -259,7 +284,7 @@ void executeCommand(struct Core *currentCore, int coreAmount, char* command, int
         printf("Realizar comando en %s con %d nucleos.\n", currentCore->name, coreAmount);
         char restCommand[200];
         snprintf(restCommand, sizeof(restCommand),
-                 "--cpu-set %d-%d --bind-to core -n %d --hostfile /home/curso/Desktop/sharedfolder/hostfile1 -np 1 /home/curso/Desktop/sharedfolder/slaveExecutable %d %d : ",
+                 "--cpu-set %d-%d --bind-to core -n %d --hostfile /home/adri/Desktop/sharedfolder/hostfile1 -np 1 /home/curso/Desktop/sharedfolder/slaveExecutable %d %d : ",
                  (currentCore->count - coreAmount), (currentCore->count - 1), coreAmount, nDiv, ogSize);
 
         strcat(command, restCommand);
@@ -271,7 +296,7 @@ void executeCommand(struct Core *currentCore, int coreAmount, char* command, int
         printf("Realizar comando en %s con %d nucleos.\n", currentCore->name, coreAmount);
         char restCommand[200];
         snprintf(restCommand, sizeof (restCommand),
-                 "--cpu-set %d-%d --bind-to core -n %d --hostfile /home/curso/Desktop/sharedfolder/hostfile2 -np 1 /home/curso/Desktop/sharedfolder/slaveExecutable %d %d : ",
+                 "--cpu-set %d-%d --bind-to core -n %d --hostfile /home/adri/Desktop/sharedfolder/hostfile2 -np 1 /home/curso/Desktop/sharedfolder/slaveExecutable %d %d : ",
                  (currentCore->count - coreAmount), (currentCore->count - 1), coreAmount, nDiv, ogSize);
 
         strcat(command, restCommand);
@@ -312,7 +337,7 @@ void delete(){
     int i = 1;
     while (1){
         char filename[100];
-        snprintf(filename, sizeof(filename), "/home/curso/Desktop/sharedfolder/encrypt%d.txt", i);
+        snprintf(filename, sizeof(filename), "/home/adri/Desktop/sharedfolder/encrypt%d.txt", i);
         if (remove(filename) == 0){
             printf("File %s deleted succesfully. \n", filename);
         }
@@ -321,4 +346,113 @@ void delete(){
         }
         i++;
     }
+}
+
+char *read_txt(const char *txt) {
+    FILE *pFile = fopen(txt, "r");
+
+    if (pFile == NULL) {
+        printf("No se pudo abrir el pFile.\n");
+        return NULL;
+    }
+
+    // Calcula el tamaño del pFile
+    fseek(pFile, 0, SEEK_END);
+    long file_len = ftell(pFile);
+    fseek(pFile, 0, SEEK_SET);
+
+    // Crea una cadena para almacenar el string del pFile
+    char *string = (char *)malloc(file_len + 1);
+
+    if (string == NULL) {
+        fclose(pFile);
+        printf("Error en la asignación de memoria.\n");
+        return NULL;
+    }
+
+    // Lee el string del pFile
+    fread(string, 1, file_len, pFile);
+    string[file_len] = '\0'; // Añade el carácter nulo al final
+
+    // Cierra el pFile
+    fclose(pFile);
+
+    return string;
+
+}
+
+char* textToMorse(const char *text) {
+    const char morseCode[][5] = {
+            ".-", "-...", "-.-.", "-..", ".",
+            "..-.", "--.", "....", "..", ".---",
+            "-.-", ".-..", "--", "-.", "---",
+            ".--.", "--.-", ".-.", "...", "-",
+            "..-", "...-", ".--", "-..-", "-.--",
+            "--.."
+    };
+    const char *alpha = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    int i, j;
+    int resultLength = 0;
+
+    // Calcular la longitud del resultado morse
+    for (i = 0; text[i]; i++) {
+        if (text[i] == ' ') {
+            resultLength++;
+        } else {
+            for (j = 0; j < strlen(alpha); j++) {
+                if (toupper(text[i]) == alpha[j]) {
+                    resultLength += strlen(morseCode[j]) + 1; // +1 para el espacio entre letras
+                    break;
+                }
+            }
+        }
+    }
+
+    // Crear la variable para almacenar el resultado morse
+    char *result = (char *)malloc(sizeof(char) * resultLength);
+    if (result == NULL) {
+        printf("Error al asignar memoria.");
+        return NULL;
+    }
+
+    // Convertir texto a morse y almacenar en 'result'
+    int pos = 0;
+    for (i = 0; text[i]; i++) {
+        if (text[i] == ' ') {
+            result[pos++] = ' ';
+        } else {
+            for (j = 0; j < strlen(alpha); j++) {
+                if (toupper(text[i]) == alpha[j]) {
+                    int len = strlen(morseCode[j]);
+                    strcpy(result + pos, morseCode[j]);
+                    pos += len;
+                    result[pos++] = ' '; // Agregar espacio entre letras
+                    break;
+                }
+            }
+        }
+    }
+    result[pos] = '\0'; // Agregar terminador nulo al final
+
+    return result;
+}
+
+void transformarString(char input_str[]) {
+    int longitud = strlen(input_str);
+
+    // Reemplaza espacios por 'e'
+    for (int i = 0; i < longitud; i++) {
+        if (input_str[i] == ' ') {
+            input_str[i] = 'e';
+        }
+    }
+
+    // Desplaza los caracteres para hacer espacio para 'i' al inicio y 'f' al final
+    for (int i = longitud; i >= 0; i--) {
+        input_str[i + 1] = input_str[i];
+    }
+
+    // Agrega 'i' al inicio y 'f' al final
+    input_str[0] = 'i';
+    input_str[longitud + 1] = 'f';
 }

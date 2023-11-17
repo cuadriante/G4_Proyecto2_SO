@@ -53,6 +53,6 @@ int main(int argc, char* argv[])          /* input arguments are not used */
     }
 
     char* address = "0.0.0.0";
-    serverOn(8887, address, S3, S1, S2);
+    serverOn(8888, address, S3, S1, S2);
     return 0;
 }

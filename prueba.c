@@ -23,7 +23,7 @@ void transformarString(char input_str[]) {
 }
 
 int main() {
-    char entrada[] = "--. .- - .. - --- .-.-. ";
+    char entrada[] = ".- .-.";
 
     // Asegúrate de que la cadena tenga suficiente espacio para 'i' y 'f' adicionales
     char resultado[50];

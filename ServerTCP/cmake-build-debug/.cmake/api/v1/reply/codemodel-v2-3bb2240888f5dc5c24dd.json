@@ -39,7 +39,7 @@
 				{
 					"directoryIndex" : 0,
 					"id" : "ServerTCP::@6890427a1f51a3e7e1df",
-					"jsonFile" : "target-ServerTCP-Debug-189b5bfd7227138f5cf7.json",
+					"jsonFile" : "target-ServerTCP-Debug-41613ebf1acc52a7fe40.json",
 					"name" : "ServerTCP",
 					"projectIndex" : 0
 				}
@@ -49,8 +49,8 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "/home/curso/Proyectos/ServerTCP/cmake-build-debug",
-		"source" : "/home/curso/Proyectos/ServerTCP"
+		"build" : "/home/adri/Documents/G4_Proyecto2_SO/ServerTCP/cmake-build-debug",
+		"source" : "/home/adri/Documents/G4_Proyecto2_SO/ServerTCP"
 	},
 	"version" : 
 	{

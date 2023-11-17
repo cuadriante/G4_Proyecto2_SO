@@ -1,0 +1,1 @@
+/usr/bin/cc -g CMakeFiles/ServerTCP.dir/main.c.o CMakeFiles/ServerTCP.dir/serverInit.c.o CMakeFiles/ServerTCP.dir/driver_lib.c.o -o ServerTCP 
