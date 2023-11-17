@@ -236,7 +236,7 @@ int serverOn(int SERV_PORT, char* SERV_HOST_ADDR, int S3, int S1, int S2){
                 printf("Resultado: %s\n", resultado);
 
                 sleep(2);
-                enviarCaracteresSerial(morseCode);
+                enviarCaracteresSerial(resultado);
 
                 free(command);
 
